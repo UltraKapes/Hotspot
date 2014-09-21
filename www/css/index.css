@@ -122,7 +122,12 @@ ul{
 
 li{text-align: left;}
 
-#menu{width: 5%;}
+#logo{
+    position: relative;
+    width: 5%;
+    border: 1px solid gold;
+    }
+#menu{}
 
 #submenu {
 
