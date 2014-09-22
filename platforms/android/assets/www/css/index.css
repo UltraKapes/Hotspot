@@ -154,3 +154,14 @@ li{text-align: left;}
 #bars-button {
     margin:7px;
 }
+
+.ui-panel {
+    top: 55px;
+    height: calc(100% - 41px);
+}
+
+.ui-panel-animate.ui-panel-content-fixed-toolbar-position-left.ui-panel-content-fixed-toolbar-open.ui-panel-content-fixed-toolbar-display-push {
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
