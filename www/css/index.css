@@ -178,7 +178,7 @@ li {
 
 .ui-panel {
     top: 55px;
-    height: calc(100% - 41px);
+    height: calc(100% - 55px);
 }
 
 .ui-panel-animate.ui-panel-content-fixed-toolbar-position-left.ui-panel-content-fixed-toolbar-open.ui-panel-content-fixed-toolbar-display-push {
@@ -193,5 +193,5 @@ li {
 }
 
 #content{
-    font-size: 3em;
+    font-size: 1em;
 }
