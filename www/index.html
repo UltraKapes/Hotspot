@@ -34,31 +34,39 @@
     <title>Hello World</title>
 </head>
 <body>
-<div data-role="page" data-theme="b">
-    <header data-role="header">
-        <header data-role="header">
-            <h1>My App</h1>
-            <img src="img/hotspotlogo.png" width="5%" height="75px" class="ui-btn-right" />
-            <div data-role="collapsible" data-mini="true">
-                <h4>Menu</h4>
-                <ul data-role="listview">
-                    <li><a href="#">Get Location</a></li>
-                    <li><a href="#">Set Location</a></li>
-                    <li><a href="#">Whatevs man</a></li>
-                </ul>
+    <div data-role="page" id="home" data-theme="b">
+        <div data-role="panel" id="navpanel" data-theme="a" data-display="overlay" data-position="left">
+            <div data-role="controlgroup" data-corners="false">
+                <a href="#" data-role="button">View Location</a>
+                <a href="#" data-role="button">Set Location</a>
+                <a href="#" data-role="button">More Options</a>
+
             </div>
-        </header>
-        <div id="map-canvas" data-role="content" data-theme="a">
+        </div>
+        <div id="header" data-role="header" data-theme="b">
+            <a id="bars-button" data-icon="bars" class="ui-btn-left" style="margin-top:10px;" href="#navpanel">Menu</a>
+            <h1>HOTSPOT</h1>
 
         </div>
+        <!-- footer -->
+        <div data-role="footer" data-position="fixed" data-theme="d" class="ui-bar">
+            <a href="#about" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-transition="flip" data-icon="info" data-theme="e">About</a>
 
-    </header>
+        </div>
+        <!-- About Author Popup -->
+        <div data-role="popup" id="about" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width:300px;" class="ui-corner-all">
 
+            <div data-role="header" class="ui-header ui-bar-c"> <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                <h1>HotSpot<br></h1>
 
-
-
-</div>
-
+            </div>
+            <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+                <p>A Team 27 Application <b>2014</b>
+             </div>
+        </div>
+        <!-- /About -->
+    </div>
+</body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
@@ -67,11 +75,7 @@
 <script type="text/javascript">
     app.initialize();
 </script>
-
-<script>
-
+<script type="text/javascript">
 
 </script>
-</div>
-</body>
 </html>

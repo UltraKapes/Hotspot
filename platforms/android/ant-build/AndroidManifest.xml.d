@@ -1,2 +1,2 @@
-C:\Users\Shane\git\Hotspot\platforms\android\ant-build\AndroidManifest.xml : \
-C:\Users\Shane\git\Hotspot\platforms\android\AndroidManifest.xml \
+c:\Users\shane\Documents\GitHub\Hotspot\platforms\android\ant-build\AndroidManifest.xml : \
+c:\Users\shane\Documents\GitHub\Hotspot\platforms\android\AndroidManifest.xml \

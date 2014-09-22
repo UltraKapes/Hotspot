@@ -136,3 +136,21 @@ li{text-align: left;}
     display: none;
 
 }
+
+/*.ui-body-f {
+    font-weight: bold;
+    color: white;
+    background-color: purple;
+}*/
+.ui-panel-inner {
+    padding:0px;
+}
+.ui-controlgroup {
+    margin:0;
+}
+#header {
+    height:54px;
+}
+#bars-button {
+    margin:7px;
+}
