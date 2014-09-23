@@ -72,6 +72,7 @@ body {
     padding: 0px;
     text-transform: uppercase;
     width: 100%;
+	border: 2px solid  gold;
 }
 
 /* Portrait layout (default) */
@@ -192,6 +193,7 @@ li {
    font-size: 2em;
 }
 
-#content{
-    font-size: 1em;
-}
+
+
+
+
