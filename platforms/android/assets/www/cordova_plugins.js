@@ -34,6 +34,13 @@ module.exports = [
         "clobbers": [
             "navigator.compass"
         ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.splashscreen/www/splashscreen.js",
+        "id": "org.apache.cordova.splashscreen.SplashScreen",
+        "clobbers": [
+            "navigator.splashscreen"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -41,7 +48,8 @@ module.exports.metadata =
 {
     "org.apache.cordova.device-motion": "0.2.11-dev",
     "org.apache.cordova.device-orientation": "0.3.10-dev",
-    "org.apache.cordova.geolocation": "0.3.11-dev"
+    "org.apache.cordova.geolocation": "0.3.11-dev",
+    "org.apache.cordova.splashscreen": "0.3.3"
 }
 // BOTTOM OF METADATA
 });

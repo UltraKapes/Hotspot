@@ -3,28 +3,30 @@
 <head>
     <title>jQuery mobile with Google maps geo directions example</title>
     <meta content="en" http-equiv="content-language">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css"/>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3&sensor=false&language=en"></script>
-	<link rel="stylesheet" type="text/css" href="css/index.css" />
-	
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+
     <script type="text/javascript">
-        $(document).on("pageinit", "#map_page", function() {
+        $(document).on("pageinit", "#map_page", function () {
             initialize();
         });
 
 
 
-        function initialize()
-        {
 
-            var mapCenter = new google.maps.LatLng(59.3426606750, 18.0736160278);
+
+        function initialize() {
+            var zoom = Math.floor(($('body').width() / 512)+1);
+
+            var mapCenter = new google.maps.LatLng(0,0);
 
             var myOptions = {
-                zoom:10,
+                zoom: zoom,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
-                center: mapCenter
+               center: mapCenter
             }
 
             map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -35,7 +37,7 @@
     </script>
 </head>
 <body>
-<div data-role="page" id="map_page" style="border: 2px solid green;">
+<div data-role="page" id="map_page">
     <div data-role="panel" id="navpanel" data-theme="b" data-display="overlay" data-position="left">
         <div data-role="controlgroup" data-corners="false">
             <a href="#" data-role="button">View Location</a>
@@ -44,30 +46,29 @@
 
         </div>
     </div>
-    <div id="header" data-role="header" data-theme="b" >
+    <div id="header" data-role="header" data-theme="b">
         <a id="bars-button" data-icon="bars" class="ui-btn-left" style="margin-top:10px;" href="#navpanel">Menu</a>
+
         <h1 id="heading">HOTSPOT</h1>
 
     </div>
-    <div data-role="content"  style="border: 2px solid  gold;" > 
-        <div style="border: 2px solid  blue;" class="ui-bar-c ui-corner-all ui-shadow" style="padding:1em;" >
-            <div  id="map_canvas"  ></div>
-
-
-
-
-        </div>
-
+    <div id="frame" data-role="content">
+        <div id="map_canvas"></div>
     </div>
 
-    <div data-role="footer" data-position="fixed" data-theme="b" class="ui-bar">
-        <a href="#about" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-transition="flip" data-icon="info" data-theme="e">About</a>
+    <div id="footer" data-role="footer" data-position="fixed" data-theme="b" class="ui-bar">
+        <a href="#about" data-rel="popup" data-position-to="window" data-role="button" data-inline="true"
+           data-transition="flip" data-icon="info" data-theme="e">About</a>
 
     </div>
     <!-- About Author Popup -->
-    <div data-role="popup" id="about" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width:300px;" class="ui-corner-all">
+    <div data-role="popup" id="about" data-overlay-theme="a" data-theme="c" data-dismissible="false"
+         style="max-width:300px;" class="ui-corner-all">
 
-        <div data-role="header" class="ui-header ui-bar-c"> <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+        <div data-role="header" class="ui-header ui-bar-c"><a href="#" data-rel="back" data-role="button" data-theme="a"
+                                                              data-icon="delete" data-iconpos="notext"
+                                                              class="ui-btn-right">Close</a>
+
             <h1>HotSpot<br></h1>
 
         </div>
@@ -79,7 +80,7 @@
 </div>
 </body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript"  src="cordova.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript">
     app.initialize();
@@ -89,17 +90,13 @@
      alert("Jquery is working");
      });*/
 </script>
-<script type="text/javascript">
-function doResize() {
-var winhight = $('[data-role="page"]').first().outerHeight();
-console.log(winhight);
-var headhight = $('[data-role="header"]').first().outerHeight();
-var foothight = $('[data-role="footer"]').first().outerHeight();
-var $content=$('[data-role="content"]');
-newhight = winhight - headhight - foothight;
-$content.css('min-height',newhight + 'px');
-}
-$(document).bind('pageshow',doResize);
-$(window).bind('resize orientationchange',doResize);
-</script> 
+<script>
+    var getmap = $('body').width();
+   console.log(getmap);
+    var check = $(document).height();
+    var check2 = $('#header').height();
+    var check3 = $('#footer').height();
+    var setHeight = check - (check2 + check3);
+    $("#map_canvas").css({'height': setHeight + "px" });
+</script>
 </html>
