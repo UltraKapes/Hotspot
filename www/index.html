@@ -34,7 +34,8 @@
 
 
             map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-
+            var getmap = $('body').width();
+            var setheight = ($(document).height()/4);
 
             for (i = 0; i < locations.length; i++) {
                 var source = locations[i][3];
@@ -43,7 +44,7 @@
                         '</div>' +
                         '<h1 id="firstHeading" class="firstHeading">"' + locations[i][0] + '"</h1>' +
                         '<div id="bodyContent">' +
-                        '<iframe id="windowframe" width="560" height="349" src="' + source + '" frameborder="0" allowfullscreen></iframe>' +
+                        '<iframe id="windowframe" width="100%" height="' + setheight + '" src="' + source + '" frameborder="0" allowfullscreen></iframe>' +
                         '</div>' +
                         '</div>';
 
