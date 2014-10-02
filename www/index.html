@@ -14,62 +14,56 @@
             initialize();
         });
 
-            function initialize() {
-            var zoom = Math.floor(($('body').width() / 512)+1);
+        function initialize() {
+            var zoom = Math.floor(($('body').width() / 512) + 1);
 
-            var mapCenter = new google.maps.LatLng(0,0);
+            var mapCenter = new google.maps.LatLng(0, 0);
 
             var myOptions = {
                 zoom: zoom,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
-               center: mapCenter
+                center: mapCenter
             }
 
-                var locations = [
-                    ['UQ', -27.495134, 153.013502,"http://www.youtube.com/embed/uZ2SWWDt8Wg", 1],
-                    ['New York', 40.715520, -74.002036,"http://www.youtube.com/embed/JG0wmXyi-Mw", 2],
-                    ['Stadtbibliothek', 47.09399, 15.40548,"http://www.youtube.com/embed/tfEjTgUmeWw",3],
-                    ['Fallujah', 33.101509, 44.047308,"http://www.youtube.com/embed/V2EOMzZsTrE", 4]
-                 ];
+            var locations = [
+                ['UQ', -27.495134, 153.013502, "http://www.youtube.com/embed/uZ2SWWDt8Wg", 1],
+                ['New York', 40.715520, -74.002036, "http://www.youtube.com/embed/JG0wmXyi-Mw", 2],
+                ['Stadtbibliothek', 47.09399, 15.40548, "http://www.youtube.com/embed/tfEjTgUmeWw", 3],
+                ['Fallujah', 33.101509, 44.047308, "http://www.youtube.com/embed/V2EOMzZsTrE", 4]
+            ];
 
 
-                map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+            map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
 
+            for (i = 0; i < locations.length; i++) {
+                var source = locations[i][3];
+                var contentString = '<div id="content">' +
+                        '<div id="siteNotice">' +
+                        '</div>' +
+                        '<h1 id="firstHeading" class="firstHeading">"' + locations[i][0] + '"</h1>' +
+                        '<div id="bodyContent">' +
+                        '<iframe id="windowframe" width="560" height="349" src="' + source + '" frameborder="0" allowfullscreen></iframe>' +
+                        '</div>' +
+                        '</div>';
 
-                    //var infowindow = new google.maps.InfoWindow();
-
-
-
-                for (i = 0; i < locations.length; i++) {
-                 var marker, i;
-                 var source = locations[i][3];
-                 var contentString = '<div id="content">'+
-                 '<div id="siteNotice">'+
-                 '</div>'+
-                 '<h1 id="firstHeading" class="firstHeading">"' + locations[i][0] + '"</h1>'+
-                 '<div id="bodyContent">'+
-                 '<iframe id="windowframe" width="560" height="349" src="' + source + '" frameborder="0" allowfullscreen></iframe>'+
-                 '</div>'+
-                 '</div>';
-
-                    var infowindow = new google.maps.InfoWindow({
-                        content: contentString });
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString });
 
 
-                    marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                        map: map
-                    });
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    map: map
+                });
 
-                    google.maps.event.addListener(marker, 'click', (function(content) {
-                        return function() {
-                            infowindow.setContent(content);
-                            infowindow.open(map, this);
-                        }
-                    })(contentString));
-                }
-              }
+                google.maps.event.addListener(marker, 'click', (function (content) {
+                    return function () {
+                        infowindow.setContent(content);
+                        infowindow.open(map, this);
+                    }
+                })(contentString));
+            }
+        }
 
 
     </script>
@@ -130,7 +124,7 @@
 </script>
 <script>
     var getmap = $('body').width();
-   console.log(getmap);
+    console.log(getmap);
     var check = $(document).height();
     var check2 = $('#header').height();
     var check3 = $('#footer').height();
