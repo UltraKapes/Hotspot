@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uploads</title>
+    <meta content="en" http-equiv="content-language">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css"/>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3&sensor=false&language=en"></script>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+
+
+</head>
+<body>
+<div data-role="page2" id="map_page">
+    <div data-role="panel" id="navpanel" data-theme="b" data-display="overlay" data-position="left">
+        <div data-role="controlgroup" data-corners="false">
+            <a href="#" data-role="button">View Location</a>
+            <a href="#" data-role="button">Set Location</a>
+            <a href="index.html" data-role="button" data-transition="flip">Map</a>
+            <a href="#" data-role="button">More Options</a>
+
+        </div>
+    </div>
+    <div id="header" data-role="header" data-position="fixed" data-theme="b">
+        <a id="bars-button" data-icon="bars" class="ui-btn-left" style="margin-top:10px;" href="#navpanel">Menu</a>
+
+        <h1 id="heading">HOTSPOT</h1>
+
+    </div>
+    <div id="frame" data-role="content">
+
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var d = new Date();
+
+                var month = d.getMonth()+1;
+                var day = d.getDate();
+
+                var output = d.getFullYear() + '/' +
+                        ((''+month).length<2 ? '0' : '') + month + '/' +
+                        ((''+day).length<2 ? '0' : '') + day;
+
+                $('input[id=dateselect]').val(output);
+
+                $("#videoField").on("change", gotPic);
+            });
+
+
+            function gotPic(event) {
+
+
+
+                $("#yourimage").attr("src", URL.createObjectURL(event.target.files[0]))
+            };
+        </script>
+        <style>h1:</style>
+        <br/>
+        <style> h1 {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        </style>
+        <h1>Upload Page</h1>
+        <br/>
+        <br/>
+        <label for="text-basic">Video:</label>
+        <input type="file" capture="camera" accept="*" id="videoField">
+        <br/>
+        <label for="text-basic">Tags:</label>
+        <input name="text-basic" id="text-basic" data-mini="true" value="" type="text">
+        <br/>
+        <label for="slider-flip-m">Graphic Content:</label>
+        <select name="slider-flip-m" id="slider-flip-m" data-role="slider" data-mini="true">
+            <option value="off">No</option>
+            <option value="on" selected="">Yes</option>
+        </select>
+        <br/>
+        <br/>
+        <label for="date">Date:</label>
+        <input name="date" id="dateselect" value="" type="date">
+        <br/>
+
+        <button type="submit" id="submit-5" class="ui-shadow ui-btn ui-corner-all ui-mini">Submit</button>
+
+
+        <img id="yourimage">
+    </div>
+
+    <div id="footer" data-role="footer" data-position="fixed" data-theme="b" class="ui-bar">
+        <a href="#about" data-rel="popup" data-position-to="window" data-role="button" data-inline="true"
+           data-transition="flip" data-icon="info" data-theme="e">Info</a>
+
+    </div>
+    <!-- About Author Popup -->
+    <div data-role="popup" id="about" data-overlay-theme="a" data-theme="c" data-dismissible="false"
+         style="max-width:300px;" class="ui-corner-all">
+
+        <div data-role="header" class="ui-header ui-bar-c"><a href="#" data-rel="back" data-role="button" data-theme="a"
+                                                              data-icon="delete" data-iconpos="notext"
+                                                              class="ui-btn-right">Close</a>
+
+            <h1>Uploads<br></h1>
+
+        </div>
+        <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+            <p>Video cannot be .avi file type<p>
+        </div>
+    </div>
+    <!-- /About -->
+</div>
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+    app.initialize();
+</script>
+
+<script>
+    var getmap = $('body').width();
+    console.log(getmap);
+    var check = $(document).height();
+    var check2 = $('#header').height();
+    var check3 = $('#footer').height();
+    var setHeight = check - (check2 + check3);
+    $("#map_canvas").css({'height': setHeight + "px" });
+</script>
+</html>

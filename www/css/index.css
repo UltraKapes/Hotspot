@@ -195,7 +195,12 @@ li {
 
 #frame{ padding: 0px;}
 
-#map_canvas{}
+#submit-5 {
+    width: auto !important;
+}
+
+#date{ width: auto !important;}
+
 
 
 

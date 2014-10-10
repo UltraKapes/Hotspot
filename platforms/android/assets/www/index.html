@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>jQuery mobile with Google maps geo directions example</title>
+    <title>Hotspot Map</title>
     <meta content="en" http-equiv="content-language">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css"/>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -15,7 +15,7 @@
         });
 
         function initialize() {
-            var zoom = Math.floor(($('body').width() / 512) + 1);
+            var zoom = Math.floor(($('body').width() / 512) + 2);
 
             var mapCenter = new google.maps.LatLng(0, 0);
 
@@ -75,6 +75,7 @@
         <div data-role="controlgroup" data-corners="false">
             <a href="#" data-role="button">View Location</a>
             <a href="#" data-role="button">Set Location</a>
+            <a href="upload.html" data-role="button" data-transition="flip">Upload</a>
             <a href="#" data-role="button">More Options</a>
 
         </div>
