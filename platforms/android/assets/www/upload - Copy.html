@@ -19,7 +19,7 @@
         <div data-role="controlgroup" data-corners="false">
             <a href="#" data-role="button">View Location</a>
             <a href="#" data-role="button">Set Location</a>
-            <a href="index.html" data-role="button" rel="external" data-transition="flip">Map</a>
+            <a href="index.html" data-role="button" data-transition="flip">Map</a>
             <a href="#" data-role="button">More Options</a>
 
         </div>
@@ -37,14 +37,14 @@
             $(document).ready(function () {
                 var d = new Date();
 
-                var month = d.getMonth()+1;
-                var day = d.getDate();
+               // var month = d.getMonth()+1;
+               // var day = d.getDate();
 
-                var output = d.getFullYear() + '/' +
-                        ((''+month).length<2 ? '0' : '') + month + '/' +
-                        ((''+day).length<2 ? '0' : '') + day;
+              //  var output = d.getFullYear() + '/' +
+                //        ((''+month).length<2 ? '0' : '') + month + '/' +
+                //        ((''+day).length<2 ? '0' : '') + day;
 
-                $('input[id=dateselect]').val(output);
+             //   $('input[id=dateselect]').val(output);
 
                 $("#videoField").on("change", gotPic);
             });
@@ -95,7 +95,7 @@
            data-transition="flip" data-icon="info" data-theme="e">Info</a>
 
     </div>
-    <!-- About Author Popup -->
+     <!-- About Author Popup -->
     <div data-role="popup" id="about" data-overlay-theme="a" data-theme="c" data-dismissible="false"
          style="max-width:300px;" class="ui-corner-all">
 
@@ -103,11 +103,11 @@
                                                               data-icon="delete" data-iconpos="notext"
                                                               class="ui-btn-right">Close</a>
 
-            <h1>Uploads<br></h1>
+            <h1>HotSpot<br></h1>
 
         </div>
         <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
-            <p>Video cannot be .avi file type<p>
+            <p>A Team 27 Application <b>2014</b>
         </div>
     </div>
     <!-- /About -->

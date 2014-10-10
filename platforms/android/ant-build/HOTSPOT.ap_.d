@@ -41,6 +41,7 @@ c:\Users\shane\Documents\GitHub\Hotspot\platforms\android\assets\www\plugins \
 c:\Users\shane\Documents\GitHub\Hotspot\platforms\android\assets\www\res \
 c:\Users\shane\Documents\GitHub\Hotspot\platforms\android\assets\www\spec \
 c:\Users\shane\Documents\GitHub\Hotspot\platforms\android\assets\www\spec.html \
+c:\Users\shane\Documents\GitHub\Hotspot\platforms\android\assets\www\upload - Copy.html \
 c:\Users\shane\Documents\GitHub\Hotspot\platforms\android\assets\www\upload.html \
 c:\Users\shane\Documents\GitHub\Hotspot\platforms\android\assets\www\css\index.css \
 c:\Users\shane\Documents\GitHub\Hotspot\platforms\android\assets\www\img\hotspotlogo.png \
