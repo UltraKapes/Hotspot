@@ -5,6 +5,8 @@
     <meta content="en" http-equiv="content-language">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css"/>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3&sensor=false&language=en"></script>
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
@@ -77,8 +79,7 @@
 <div data-role="page" id="map_page">
     <div data-role="panel" id="navpanel" data-theme="b" data-display="overlay" data-position="left">
         <div data-role="controlgroup" data-corners="false">
-            <a href="#" data-role="button">View Location</a>
-            <a href="#" data-role="button">Set Location</a>
+            <div id="setLoc"><a href="#" data-role="button">Set Location</a></div>
             <a href="upload.html" data-role="button" rel="external" data-transition="flip">Upload</a>
             <a href="#" data-role="button">More Options</a>
 
