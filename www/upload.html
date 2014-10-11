@@ -35,6 +35,7 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
+                getCurrentLocation();
                 var d = new Date();
 
                 var month = d.getMonth()+1;
@@ -49,6 +50,21 @@
                 $("#videoField").on("change", gotPic);
             });
 
+            function getCurrentLocation() {
+                navigator.geolocation.getCurrentPosition(locationSuccess, onError);
+            }
+            function locationSuccess(position) {
+                var lat = document.getElementById("latSpan");
+                var lon = document.getElementById("lonSpan");
+                $('#lat').val( position.coords.latitude );
+                $('#long').val(position.coords.longitude );
+               console.log( position.coords.latitude);
+               console.log(position.coords.longitude) ;
+            }
+
+            function onError(){
+                alert("did not work");
+            }
 
             function gotPic(event) {
 
@@ -83,6 +99,16 @@
         <label for="date">Date:</label>
         <input name="date" id="dateselect" value="" type="date">
         <br/>
+        <div>
+            <span>Current Location : </span><br><br><br>
+            Latitude : <input id="lat" type="text" name="latitude"><br>
+            Longitude: <input id="long" type="text" name="longitude"><br>
+            <ul>
+
+                <li>  <span id="latSpan"></span></li>
+                <li> <span id="lonSpan"></span></li>
+            </ul>
+        </div>
 
         <button type="submit" id="submit-5" class="ui-shadow ui-btn ui-corner-all ui-mini">Submit</button>
 
