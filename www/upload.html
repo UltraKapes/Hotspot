@@ -34,8 +34,10 @@
 
 
         <script type="text/javascript">
+			var geocoder;
             $(document).ready(function () {
                 getCurrentLocation();
+				geocoder = new google.maps.Geocoder();
                 var d = new Date();
 
                 var month = d.getMonth()+1;
@@ -53,14 +55,30 @@
             function getCurrentLocation() {
                 navigator.geolocation.getCurrentPosition(locationSuccess, onError);
             }
+
+            function getCurrentLocation2() {
+                navigator.geolocation.getCurrentPosition(codeLatLng, onError);
+            }
             function locationSuccess(position) {
-                var lat = document.getElementById("latSpan");
-                var lon = document.getElementById("lonSpan");
+
                 $('#lat').val( position.coords.latitude );
                 $('#long').val(position.coords.longitude );
                console.log( position.coords.latitude);
                console.log(position.coords.longitude) ;
+                var lat = position.coords.latitude;
+                var lng = position.coords.longitude;
+                var latlng = new google.maps.LatLng(lat, lng);
+                geocoder.geocode({
+                    'latLng': latlng
+                }, function(results, status) {
+
+                    $('#loc').val( '' + (results[4].formatted_address) + '');
+                });
+
             }
+			
+
+
 
             function onError(){
                 alert("did not work");
@@ -83,6 +101,8 @@
         <h1>Upload Page</h1>
         <br/>
         <br/>
+		<label for="text-basic">Video Title</label>
+		<input id="title" type="text" name="title"><br>
         <label for="text-basic">Video:</label>
         <input type="file" capture="camera" accept="*" id="videoField">
         <br/>
@@ -100,14 +120,12 @@
         <input name="date" id="dateselect" value="" type="date">
         <br/>
         <div>
-            <span>Current Location : </span><br><br><br>
-            Latitude : <input id="lat" type="text" name="latitude"><br>
-            Longitude: <input id="long" type="text" name="longitude"><br>
-            <ul>
-
-                <li>  <span id="latSpan"></span></li>
-                <li> <span id="lonSpan"></span></li>
-            </ul>
+            <label for="text-basic">Location</label>
+            <input id="loc" type="text" name="location"><br>
+			<label for="text-basic">Latitude:</label>
+			<input id="lat" type="text" name="latitude"><br>
+			<label for="text-basic"> Longitude:</label>
+            <input id="long" type="text" name="longitude"><br>
         </div>
 
         <button type="submit" id="submit-5" class="ui-shadow ui-btn ui-corner-all ui-mini">Submit</button>
