@@ -9,6 +9,7 @@
 	<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3&sensor=false&language=en"></script>
+    <script type="text/javascript" src="js/myJS.js"></script>
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
 
     <script type="text/javascript">
@@ -70,9 +71,14 @@
                         '<h1 id="firstHeading" class="firstHeading">"' + superArray[i][0] + '"</h1>' +
                         '<div id="bodyContent">' +
                         '<iframe id="windowframe" width="100%" height="' + setheight + '" src="' + source + '" frameborder="0" allowfullscreen></iframe>' +
+                        '<div id="reportDiv">' +
+                        '<a href="#">' +
+                        '<img id="reportImg" src="img/flag1.png" onclick="reportResponse()">' +
+                        '</a>' +
+                        '</div>' +
                         '</div>' +
                         '</div>';
-
+				
                 var infowindow = new google.maps.InfoWindow({
                     content: contentString });
 
@@ -200,39 +206,23 @@
 
             google.maps.event.trigger(map, 'resize');
         }
+        function reportResponse() {
+    		alert("Your report has been received, thank you for making HotSpot a better place!");
+        }
     </script>
 </head>
 <body>
 <div data-role="page" id="map_page">
     <div data-role="panel" id="navpanel" data-theme="b" data-display="overlay" data-position="left">
         <div data-role="controlgroup" data-corners="false">
-            <div class="container">
-	<a id="modal_trigger" href="#modal" class="btn">View Location</a>
-
-	<div id="modal" class="popupContainer" style="display:none;">
-		<header class="popupHeader">
-			<span class="header_title">Search the World</span>
-			<span class="modal_close"><i class="fa fa-times"></i></span>
-		</header>
-		
-		
-	</div>
-</div>
-<script type="text/javascript">
-	$("#modal_trigger").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
-	$(function(){
-		$(".back_btn").click(function(){	
-			return false;
-		});
-	})
-</script>
+            
 <!-- Navigation Buttons //-->
-	<!-- Search -->
-            <div>
-            	<a href="#" data-role="button">Search</a>
-            </div>
-            	<!-- Upload -->
+			<!-- Search -->
+            <a href="#" data-role="button" rel="external" data-transition="flip">View Location</a>
+           
+            <!-- Upload -->	
             <a href="upload.html" data-role="button" rel="external" data-transition="flip">Upload</a>
+            
             <!-- More Options -->
             <a href="#" data-role="button" >More Options</a>
             <div class="panelitem" data-role="collapsible" data-collapsed="true">
@@ -263,11 +253,6 @@
     <!-- Google Maps -->
     <div id="frame" data-role="content">
     <div>
-    	<section class="popupBody">
-		<form action="searchMap.asp">
-		Search: <input type="text"> <input type="submit" value="Go">
-		</form>
-		</section>
         <div id="map_canvas"></div>
     </div>
     </div>

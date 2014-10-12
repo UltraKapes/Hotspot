@@ -269,5 +269,12 @@ li {
     }
 }
 
+/* Images */
+#reportImg{
 
+	padding-top: 5%;
+}
+#reportDiv{
+	float: right;
+}
 
