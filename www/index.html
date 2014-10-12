@@ -12,17 +12,23 @@
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
 
     <script type="text/javascript">
+
         $(document).on("pageinit", "#map_page", function () {
+
             initialize();
         });
 
         function initialize() {
 
 
-
+            getCurrentLocation();
             var zoom = Math.floor(($('body').width() / 512) + 2);
 
-            var mapCenter = new google.maps.LatLng(0, 0);
+           var mapCenter = new google.maps.LatLng(0, 0);
+
+           // var mapCenter = new google.maps.LatLng(lat,long);
+
+
 
             var myOptions = {
                 zoom: zoom,
@@ -39,6 +45,8 @@
 
 
             map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+
             var getmap = $('body').width();
             var setheight = ($(document).height()/4);
 
@@ -56,20 +64,82 @@
                 var infowindow = new google.maps.InfoWindow({
                     content: contentString });
 
+                var image = new google.maps.MarkerImage(
+                        'http://maps.gpsvisualizer.com/google_maps/icons/blankcircle/red.png',
+                        //'http://plebeosaur.us/etc/map/bluedot_retina.png',
+                        null, // size
+                        null, // origin
+                        new google.maps.Point( 8, 8 ), // anchor (move to center of marker)
+                        new google.maps.Size( 17, 17 ) // scaled size (required for Retina display icon)
+                );
 
                 marker = new google.maps.Marker({
+                    flat: true,
+                    icon: image,
+                    optimized: false,
+                    visible: true,
                     position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                    map: map
+                    map: map,
+                    title: 'I might be here'
                 });
 
                 google.maps.event.addListener(marker, 'click', (function (content) {
                     return function () {
+                       // map.setCenter(marker.getPosition());
+                      //  map.setZoom(6);
                         infowindow.setContent(content);
                         infowindow.open(map, this);
                     }
                 })(contentString));
-            }
+            }homepos();
         }
+
+        function getCurrentLocation() {
+
+            navigator.geolocation.getCurrentPosition(locationSuccess, onError);
+        }
+
+        function locationSuccess(position) {
+            var lat = position.coords.latitude;
+           var  long = position.coords.longitude;
+            console.log( position.coords.latitude);
+            console.log(position.coords.longitude) ;
+
+        }
+
+        function onError(position) {
+            console.log( "fail");
+
+
+        }
+
+        function homepos(){
+            navigator.geolocation.getCurrentPosition(setPos, onError);
+            //var center1 = new google.maps.LatLng( 30.264664, -97.747378 );
+           // var center1 = new google.maps.LatLng( lat, long);
+          //  map.setCenter(center1);
+          //  map.setZoom(5);
+
+        }
+
+        function setPos(position) {
+            var lat = position.coords.latitude;
+            var  long = position.coords.longitude;
+            var center1 = new google.maps.LatLng( lat, long);
+            map.setCenter(center1);
+            map.setZoom(5);
+
+        }
+
+        function newpos(){
+
+            var center1 = new google.maps.LatLng( 30.264664, -97.747378 );
+            map.setCenter(center1);
+            map.setZoom(5);
+
+        }
+
+
 
 
 
@@ -79,9 +149,18 @@
 <div data-role="page" id="map_page">
     <div data-role="panel" id="navpanel" data-theme="b" data-display="overlay" data-position="left">
         <div data-role="controlgroup" data-corners="false">
-            <div id="setLoc"><a href="#" data-role="button">Set Location</a></div>
+            <div><a href="#" data-role="button">Search Location</a></div>
             <a href="upload.html" data-role="button" rel="external" data-transition="flip">Upload</a>
-            <a href="#" data-role="button">More Options</a>
+            <a href="#" data-role="button" >More Options</a>
+            <div id="locations" data-role="collapsible" data-collapsed="true">
+                <h4>Set Location</h4>
+                <ul data-role="listview">
+                    <li><a href="#" onclick=newpos()>North America</a></li>
+                    <li><a href="#">List item 2</a></li>
+                    <li><a href="#">List item 3</a></li>
+                </ul>
+            </div>
+
 
         </div>
     </div>

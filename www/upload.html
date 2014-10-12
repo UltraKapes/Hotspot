@@ -17,8 +17,6 @@
 <div data-role="page2" id="map_page">
     <div data-role="panel" id="navpanel" data-theme="b" data-display="overlay" data-position="left">
         <div data-role="controlgroup" data-corners="false">
-            <a href="#" data-role="button">View Location</a>
-            <a href="#" data-role="button">Set Location</a>
             <a href="index.html" data-role="button" rel="external" data-transition="flip">Map</a>
             <a href="#" data-role="button">More Options</a>
 
@@ -36,7 +34,7 @@
         <script type="text/javascript">
 			var geocoder;
             $(document).ready(function () {
-                getCurrentLocation();
+                    getCurrentLocation();
 				geocoder = new google.maps.Geocoder();
                 var d = new Date();
 
@@ -56,9 +54,6 @@
                 navigator.geolocation.getCurrentPosition(locationSuccess, onError);
             }
 
-            function getCurrentLocation2() {
-                navigator.geolocation.getCurrentPosition(codeLatLng, onError);
-            }
             function locationSuccess(position) {
 
                 $('#lat').val( position.coords.latitude );
