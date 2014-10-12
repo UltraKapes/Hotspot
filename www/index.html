@@ -200,21 +200,43 @@
 
             google.maps.event.trigger(map, 'resize');
         }
-
-
-
-
-
     </script>
 </head>
 <body>
 <div data-role="page" id="map_page">
     <div data-role="panel" id="navpanel" data-theme="b" data-display="overlay" data-position="left">
         <div data-role="controlgroup" data-corners="false">
-            <div><a href="#" data-role="button">Search Location</a></div>
+            <div class="container">
+	<a id="modal_trigger" href="#modal" class="btn">View Location</a>
+
+	<div id="modal" class="popupContainer" style="display:none;">
+		<header class="popupHeader">
+			<span class="header_title">Search the World</span>
+			<span class="modal_close"><i class="fa fa-times"></i></span>
+		</header>
+		
+		
+	</div>
+</div>
+<script type="text/javascript">
+	$("#modal_trigger").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
+	$(function(){
+		$(".back_btn").click(function(){	
+			return false;
+		});
+	})
+</script>
+<!-- Navigation Buttons //-->
+	<!-- Search -->
+            <div>
+            	<a href="#" data-role="button">Search</a>
+            </div>
+            	<!-- Upload -->
             <a href="upload.html" data-role="button" rel="external" data-transition="flip">Upload</a>
+            <!-- More Options -->
             <a href="#" data-role="button" >More Options</a>
             <div class="panelitem" data-role="collapsible" data-collapsed="true">
+            <!-- Set Location -->
                 <h4>Set Location</h4>
                 <ul data-role="listview">
                     <li><a href="#" onclick=newpos()>North America</a></li>
@@ -228,46 +250,46 @@
                 <li><a id="changeMarkers2" href="#">Youtube</a></li>
                 <li><a id="changeMarkers3" href="#">User Video</a></li>
             </ul>
-
-
-
             </div>
-
-
         </div>
     </div>
+    
+    <!-- Title -->
     <div id="header" data-role="header" data-position="fixed" data-theme="b">
-        <a id="bars-button" data-icon="bars" class="ui-btn-left" style="margin-top:10px;" href="#navpanel">Menu</a>
-
+        <a id="bars-button" data-icon="bars" class="ui-btn-left" style="margin-top:10px;" href="#navpanel">Menu</a>	
         <h1 id="heading">HOTSPOT</h1>
-
     </div>
+    
+    <!-- Google Maps -->
     <div id="frame" data-role="content">
-
+    <div>
+    	<section class="popupBody">
+		<form action="searchMap.asp">
+		Search: <input type="text"> <input type="submit" value="Go">
+		</form>
+		</section>
         <div id="map_canvas"></div>
     </div>
-
+    </div>
+    
+    <!-- Footer -->
     <div id="footer" data-role="footer" data-position="fixed" data-theme="b" class="ui-bar">
         <a href="#about" data-rel="popup" data-position-to="window" data-role="button" data-inline="true"
            data-transition="flip" data-icon="info" data-theme="e">About</a>
-
     </div>
-    <!-- About Author Popup -->
+    <!-- /About -->
     <div data-role="popup" id="about" data-overlay-theme="a" data-theme="c" data-dismissible="false"
          style="max-width:300px;" class="ui-corner-all">
 
         <div data-role="header" class="ui-header ui-bar-c"><a href="#" data-rel="back" data-role="button" data-theme="a"
-                                                              data-icon="delete" data-iconpos="notext"
-                                                              class="ui-btn-right">Close</a>
-
-            <h1>HotSpot<br></h1>
-
+        data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+        <h1>HotSpot<br></h1>
         </div>
         <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
             <p>A Team 27 Application <b>2014</b>
         </div>
     </div>
-    <!-- /About -->
+    
 </div>
 </body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
