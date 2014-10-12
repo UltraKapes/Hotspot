@@ -17,9 +17,26 @@
 
             initialize();
         });
+		 var tubeArray = [
+                ['UQ', -27.495134, 153.013502, "http://www.youtube.com/embed/uZ2SWWDt8Wg", 1],
+                ['New York', 40.715520, -74.002036, "http://www.youtube.com/embed/JG0wmXyi-Mw", 2],
+                ['Stadtbibliothek', 47.09399, 15.40548, "http://www.youtube.com/embed/tfEjTgUmeWw", 3],
+                ['Fallujah', 33.101509, 44.047308, "http://www.youtube.com/embed/V2EOMzZsTrE", 4]
+            ];
+
+            var usersArray = [
+                ["UQ", -27.47201, 153.02445, "http:////www.youtube.com/embed/R5j-Vbt_vmg",1]
+               
+            ];
+       var superArray;
+        superArray = [];
+        for(i=0;i<tubeArray.length ; i++)superArray.push(tubeArray[i]);
+        for(i=0;i<usersArray.length ; i++)superArray.push(usersArray[i]);
+        var markerArray = [];
+
 
         function initialize() {
-
+            for(i=0;i<superArray.length ; i++)console.log(superArray[i]);
 
             getCurrentLocation();
             var zoom = Math.floor(($('body').width() / 512) + 2);
@@ -36,12 +53,7 @@
                 center: mapCenter
             }
 
-            var locations = [
-                ['UQ', -27.495134, 153.013502, "http://www.youtube.com/embed/uZ2SWWDt8Wg", 1],
-                ['New York', 40.715520, -74.002036, "http://www.youtube.com/embed/JG0wmXyi-Mw", 2],
-                ['Stadtbibliothek', 47.09399, 15.40548, "http://www.youtube.com/embed/tfEjTgUmeWw", 3],
-                ['Fallujah', 33.101509, 44.047308, "http://www.youtube.com/embed/V2EOMzZsTrE", 4]
-            ];
+           
 
 
             map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -50,12 +62,12 @@
             var getmap = $('body').width();
             var setheight = ($(document).height()/4);
 
-            for (i = 0; i < locations.length; i++) {
-                var source = locations[i][3];
+            for (i = 0; i < superArray.length; i++) {
+                var source = superArray[i][3];
                 var contentString = '<div id="content">' +
                         '<div id="siteNotice">' +
                         '</div>' +
-                        '<h1 id="firstHeading" class="firstHeading">"' + locations[i][0] + '"</h1>' +
+                        '<h1 id="firstHeading" class="firstHeading">"' + superArray[i][0] + '"</h1>' +
                         '<div id="bodyContent">' +
                         '<iframe id="windowframe" width="100%" height="' + setheight + '" src="' + source + '" frameborder="0" allowfullscreen></iframe>' +
                         '</div>' +
@@ -78,9 +90,9 @@
                     icon: image,
                     optimized: false,
                     visible: true,
-                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    position: new google.maps.LatLng(superArray[i][1], superArray[i][2]),
                     map: map,
-                    title: 'I might be here'
+                    title: 'Hotspot'
                 });
 
                 google.maps.event.addListener(marker, 'click', (function (content) {
@@ -139,6 +151,56 @@
 
         }
 
+        window.onload = function() {
+            var changeMarkersInput1 = document.getElementById("changeMarkers1");
+            changeMarkersInput1.addEventListener('click', function(e) {
+                var type = "all";
+                displayMapMarkers(type);
+
+            }, false);
+
+            var changeMarkersInput2 = document.getElementById("changeMarkers2");
+            changeMarkersInput2.addEventListener('click', function(e) {
+                var type = "tube";
+                displayMapMarkers(type);
+            }, false);
+
+            var changeMarkersInput2 = document.getElementById("changeMarkers3");
+            changeMarkersInput2.addEventListener('click', function(e) {
+                var type = "users";
+                displayMapMarkers(type);
+            }, false);
+
+        }
+
+        function displayMapMarkers(type) {
+            if (type== "all")
+            {  superArray = [];
+                for(i=0;i<tubeArray.length ; i++)superArray.push(tubeArray[i]);
+                for(i=0;i<usersArray.length ; i++)superArray.push(usersArray[i]);
+                initialize();
+            }
+            if (type== "tube")
+            {  superArray = [];
+                for(i=0;i<tubeArray.length ; i++)superArray.push(tubeArray[i]);
+
+                initialize();
+            }
+            if (type== "users")
+            {  superArray = [];
+
+                for(i=0;i<usersArray.length ; i++)superArray.push(usersArray[i]);
+                initialize();
+            }
+
+
+        }
+
+        function showMarkers() {
+
+            google.maps.event.trigger(map, 'resize');
+        }
+
 
 
 
@@ -152,13 +214,23 @@
             <div><a href="#" data-role="button">Search Location</a></div>
             <a href="upload.html" data-role="button" rel="external" data-transition="flip">Upload</a>
             <a href="#" data-role="button" >More Options</a>
-            <div id="locations" data-role="collapsible" data-collapsed="true">
+            <div class="panelitem" data-role="collapsible" data-collapsed="true">
                 <h4>Set Location</h4>
                 <ul data-role="listview">
                     <li><a href="#" onclick=newpos()>North America</a></li>
                     <li><a href="#">List item 2</a></li>
                     <li><a href="#">List item 3</a></li>
                 </ul>
+            </div>
+            <div class="panelitem" data-role="collapsible" data-collapsed="true">
+                <h4>Filter</h4><ul data-role="listview">
+                <li><a id="changeMarkers1" href="#">All</a></li>
+                <li><a id="changeMarkers2" href="#">Youtube</a></li>
+                <li><a id="changeMarkers3" href="#">User Video</a></li>
+            </ul>
+
+
+
             </div>
 
 

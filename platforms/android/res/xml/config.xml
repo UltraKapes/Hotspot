@@ -14,9 +14,6 @@
     <feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
     </feature>
-	<feature name="Camera">
-		<param name="android-package" value="org.apache.cordova.CameraLauncher"/> 
-	</feature>
     <name>HOTSPOT</name>
     <description>
        Hotspot app to view video based on map location
