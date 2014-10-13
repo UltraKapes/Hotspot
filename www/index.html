@@ -11,13 +11,18 @@
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3&sensor=false&language=en"></script>
     <script type="text/javascript" src="js/myJS.js"></script>
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
     <script type="text/javascript">
-
+		
         $(document).on("pageinit", "#map_page", function () {
 
             initialize();
         });
+		 //Variables
+		
+  		var geocoder;
+		 
 		 var tubeArray = [
                 ['UQ', -27.495134, 153.013502, "http://www.youtube.com/embed/uZ2SWWDt8Wg", 1],
                 ['New York', 40.715520, -74.002036, "http://www.youtube.com/embed/JG0wmXyi-Mw", 2],
@@ -38,22 +43,24 @@
 
         function initialize() {
             for(i=0;i<superArray.length ; i++)console.log(superArray[i]);
-
+			
             getCurrentLocation();
             var zoom = Math.floor(($('body').width() / 512) + 2);
 
-           var mapCenter = new google.maps.LatLng(0, 0);
+           var mapCenter = new google.maps.LatLng(32.5468, -23.2031);
 
            // var mapCenter = new google.maps.LatLng(lat,long);
-
-
-
+		
+		
+		//FOR SEARCH FUNCTIONALITY
+		geocoder = new google.maps.Geocoder();
             var myOptions = {
                 zoom: zoom,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 center: mapCenter
             }
-
+            
+		
            
 
 
@@ -111,7 +118,14 @@
                 })(contentString));
             }homepos();
         }
-
+		
+		//SEARCH FUNCTIONALITY
+		/*function geocode() {
+		var address = document.getElementById("address").value;
+		geocoder.geocode({
+			'address': address,
+			'partialmatch': true}); */
+		
         function getCurrentLocation() {
 
             navigator.geolocation.getCurrentPosition(locationSuccess, onError);
@@ -209,9 +223,32 @@
         function reportResponse() {
     		alert("Your report has been received, thank you for making HotSpot a better place!");
         }
-    </script>
-</head>
-<body>
+    
+		//SEARCH FUNCTIONALITY
+		//NEED
+		function geocode() {
+			var address = document.getElementById("address").value;
+			geocoder.geocode({
+				'address': address,
+				'partialmatch': true}, geocodeResult);
+			}
+		//NEED
+		function geocodeResult(results, status) {
+			if (status == 'OK' && results.length > 0) {
+				map.fitBounds(results[0].geometry.viewport);
+			} else {
+				alert("Geocode was not successful for the following reason: " + status);
+			}
+		}
+		//NEED
+	function addMarkerAtCenter() {
+		var marker = new google.maps.Marker({
+			position: map.getCenter(),
+			map: map
+		});
+	}
+	</script>
+</head onload="initialize()">
 <div data-role="page" id="map_page">
     <div data-role="panel" id="navpanel" data-theme="b" data-display="overlay" data-position="left">
         <div data-role="controlgroup" data-corners="false">
@@ -251,6 +288,8 @@
     </div>
     
     <!-- Google Maps -->
+    Find Place: <input type="text" id="address"/><input type="button" value="Go" onclick="geocode()">
+       
     <div id="frame" data-role="content">
     <div>
         <div id="map_canvas"></div>
@@ -272,6 +311,7 @@
         </div>
         <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
             <p>A Team 27 Application <b>2014</b>
+			Find Place: <input type="text" id="address"/><input type="button" value="Go" onclick="geocode()">
         </div>
     </div>
     
