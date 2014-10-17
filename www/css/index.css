@@ -55,10 +55,7 @@ table {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
-#siteNotice{
-	background-color: "#0000FF";
-	background: "#0000FF";
-}
+
 
 body {
     -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
@@ -192,10 +189,23 @@ li {
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
-
+#container{
+	margin: auto;
+	text-align: center;
+	text-align: horizontal;
+	
+}
 #heading{
- color: red;
-   font-size: 2em;
+	color: red;
+	font-size: 2em;
+	display: inline-block;
+}
+
+#hotspotlogo
+{
+	height: 30px;
+	
+	margin: 0 auto;
 }
 
 #frame{ padding: 0px;}
@@ -210,7 +220,18 @@ li {
    margin:0px;
    padding:0px;
 }
+#firstHeading{
 
+	margin-bottom: 0.5px;
+    color: #343434;
+    font-weight: normal;
+    font-family: 'Ultra', sans-serif;   
+    font-size: 12;
+    line-height: 42px;
+    text-transform: uppercase;
+}
+
+}
 #box{
     margin:0px;
 }
@@ -275,11 +296,18 @@ li {
 }
 
 /* Images */
+#newsImg{
+	height: 40px;
+	padding-top: 5%;
+}
 #reportImg{
-
+	height: 40px;
+	
 	padding-top: 5%;
 }
 #reportDiv{
 	float: right;
 }
-
+#articlesDiv{
+	float: left;
+}
