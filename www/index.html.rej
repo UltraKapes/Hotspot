@@ -1,0 +1,12 @@
+diff a/www/index.html b/www/index.html	(rejected hunks)
+@@ -294,7 +294,9 @@
+             </div>
+         </div>
+     </div>
+-    
++    <div data-role="popup" id="popupBasic">
++	<p id="articleLinks"><p>
++</div>
+     <!-- Title -->
+     <div id="header" data-role="header" data-position="fixed" data-theme="b">
+         <a id="bars-button" data-icon="bars" class="ui-btn-left" style="margin-top:10px;" href="#navpanel">Menu</a>	
