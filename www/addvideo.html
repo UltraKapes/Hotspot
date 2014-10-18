@@ -22,11 +22,9 @@
 
         </div>
     </div>
-    <div id="header" data-role="header" data-position="fixed" data-theme="b">
-        <a id="bars-button" data-icon="bars" class="ui-btn-left" style="margin-top:10px;" href="#navpanel">Menu</a>
-
-        <h1 id="heading">HOTSPOT</h1>
-
+    <div id="header" data-role="header" data-tap-toggle="false" data-position="fixed" data-theme="b">
+       <a id="bars-button" data-icon="bars" class="ui-btn-left" style="margin-top:10px;" href="#navpanel">Menu</a>	
+        <br><div id="container"> <img src="img/hotspot.png" id="hotspotlogo"/><h1 id="heading">&nbsp;HOTSPOT</h1></div>
     </div>
     <div id="frame" data-role="content">
 
@@ -93,26 +91,27 @@
             font-weight: bold;
         }
         </style>
-        <h1>Upload Page</h1>
+        <h1>Video Upload</h1>
         <br/>
         <br/>
-		<label for="text-basic">Video Title</label>
+        <form method="post" enctype="multipart/form-data" action="http://deco3500-27.uqcloud.net/www/upload.php">
+        <label for="title">Video Title</label>
 		<input id="title" type="text" name="title"><br>
-        <label for="text-basic">Video:</label>
-        <input type="file" capture="camera" accept="*" id="videoField">
+        <label for="file">Video:</label>
+        <input name="file" type="file" capture="camera" accept="*" id="file">
         <br/>
-        <label for="text-basic">Tags:</label>
-        <input name="text-basic" id="text-basic" data-mini="true" value="" type="text">
+        <label for="tags">Tags:</label>
+        <input name="tags" id="tags" data-mini="true" value="" type="text">
         <br/>
-        <label for="slider-flip-m">Graphic Content:</label>
-        <select name="slider-flip-m" id="slider-flip-m" data-role="slider" data-mini="true">
+        <label for="content">Graphic Content:</label>
+        <select name="content" id="content" data-role="slider" data-mini="true">
             <option value="off">No</option>
             <option value="on" selected="">Yes</option>
         </select>
         <br/>
         <br/>
         <label for="date">Date:</label>
-        <input name="date" id="dateselect" value="" type="date">
+        <input name="date" id="date" value="" type="date">
         <br/>
         <div>
             <label for="text-basic">Location</label>
@@ -124,6 +123,7 @@
         </div>
 
         <button type="submit" id="submit-5" class="ui-shadow ui-btn ui-corner-all ui-mini">Submit</button>
+        </form>
 
 
         <img id="yourimage">
@@ -169,3 +169,5 @@
     $("#map_canvas").css({'height': setHeight + "px" });
 </script>
 </html>
+
+

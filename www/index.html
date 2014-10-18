@@ -47,9 +47,9 @@
             getCurrentLocation();
             var zoom = Math.floor(($('body').width() / 512) + 2);
 
-           var mapCenter = new google.maps.LatLng(32.5468, -23.2031);
+           var mapCenter = new google.maps.LatLng(-27.4073899,153.0028595);
 
-           // var mapCenter = new google.maps.LatLng(lat,long);
+           
 		
 		
 		//FOR SEARCH FUNCTIONALITY
@@ -152,10 +152,7 @@
 
         function homepos(){
             navigator.geolocation.getCurrentPosition(setPos, onError);
-            //var center1 = new google.maps.LatLng( 30.264664, -97.747378 );
-           // var center1 = new google.maps.LatLng( lat, long);
-          //  map.setCenter(center1);
-          //  map.setZoom(5);
+            
 
         }
 
@@ -167,14 +164,25 @@
             map.setZoom(5);
 
         }
+		
+		
+		function newpos(pos_name){
+		var pos_name = $(this).attr('id')
+		alert(pos_name);}
+		//openbox_state(state_name);
 
-        function newpos(){
+       // function newpos(String ){
+		//	var link = this.id;
 
-            var center1 = new google.maps.LatLng( 30.264664, -97.747378 );
-            map.setCenter(center1);
-            map.setZoom(5);
 
-        }
+			//alert(link);
+
+			//if( posid =="NA"){
+            //var center1 = new google.maps.LatLng( 30.264664, -97.747378 );
+            //map.setCenter(center1);
+            //map.setZoom(5);
+
+      //  }
 
         window.onload = function() {
             var changeMarkersInput1 = document.getElementById("changeMarkers1");
@@ -252,6 +260,8 @@
 			map: map
 		});
 	}
+	
+	
 	</script>
 </head onload="initialize()">
 <div data-role="page" id="map_page">
@@ -270,21 +280,57 @@
             </div>
 		   
 		   <!-- /TEST -->
-		   
-            <!-- Upload -->	
-            <a href="upload.html" data-role="button" rel="external" data-transition="flip">Upload</a>
-            
-            <!-- More Options -->
-            <a href="#" data-role="button" >More Options</a>
+		   <!-- Set Location -->
             <div class="panelitem" data-role="collapsible" data-collapsed="true">
-            <!-- Set Location -->
-                <h4>Set Location</h4>
+            
+                <h4>Quick Location</h4>
                 <ul data-role="listview">
-                    <li><a href="#" onclick=newpos()>North America</a></li>
-                    <li><a href="#">List item 2</a></li>
-                    <li><a href="#">List item 3</a></li>
+                    <li><a href="#" class="posSelector" >North America</a></li>
+                    <li><a href="#" class="posSelector" >South America</a></li>
+                    <li><a href="#" class="posSelector">Africa</a></li>
+					<li><a href="#" class="posSelector">Southeast Asia</a></li>
+					<li><a href="#" class="posSelector">Middle East</a></li>
+					<li><a href="#" class="posSelector">Europe</a></li>
                 </ul>
+				<script>
+				$('.posSelector').click(function () {
+
+				var posName = $(this).text();
+				if( posName =="North America"){
+                var center1 = new google.maps.LatLng( 30.264664, -97.747378 );
+                map.setCenter(center1);
+				map.setZoom(4); 
+				}
+				if( posName =="South America"){
+                var center1 = new google.maps.LatLng( -21.7351043,-63.28125 );
+                map.setCenter(center1);
+				map.setZoom(4); 
+				}
+				if( posName =="Africa"){
+                var center1 = new google.maps.LatLng( 0.2136714,16.98485 );
+                map.setCenter(center1);
+				map.setZoom(4); 
+				}
+				if( posName =="Southeast Asia"){
+                var center1 = new google.maps.LatLng( 8.7197676,116.607154 );
+                map.setCenter(center1);
+				map.setZoom(4); 
+				}
+				if( posName =="Middle East"){
+                var center1 = new google.maps.LatLng( 27.0821,44.0150557 );
+                map.setCenter(center1);
+				map.setZoom(4); 
+				}
+				if( posName =="Europe"){
+                var center1 = new google.maps.LatLng(49.5,22);
+                map.setCenter(center1);
+				map.setZoom(4); 
+				}				
+				});
+				</script>
             </div>
+           
+			<!-- Filter -->
             <div class="panelitem" data-role="collapsible" data-collapsed="true">
                 <h4>Filter</h4><ul data-role="listview">
                 <li><a id="changeMarkers1" href="#">All</a></li>
@@ -292,8 +338,13 @@
                 <li><a id="changeMarkers3" href="#">User Video</a></li>
             </ul>
             </div>
+			<!-- Upload -->	
+            <a href="addvideo.html" data-role="button" rel="external" data-transition="flip">Add Video</a>
         </div>
+		 
     </div>
+	
+			
     
     <!-- Title -->
     <div id="header" data-role="header" data-position="fixed" data-theme="b">
