@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css"/>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+	
+	
 
 
 </head>
@@ -83,6 +86,47 @@
 
                 $("#yourimage").attr("src", URL.createObjectURL(event.target.files[0]))
             };
+			
+			function checkform(){
+				$("#titleerror").text('')
+				$("#videoerror").text('')
+				$("#locationerror").text('')
+				var title = $("#title").val()
+				var video = $("#file").val()
+				var date = $("#date").val()
+				var location = $("#loc").val()
+				var latitude = $("#lat").val()
+				var longitude = $("#long").val()
+				
+				if(title == "")
+				{
+				 $("#titleerror").text(' '+' *Title is Required')
+				}else if(video == ""){
+				  $("#videoerror").text(' '+' *Video is Required')
+				}//else if(date == ""){
+				 // $("#date").text(' '+' *Date is Required')}
+				else if(location == "" || latitude == "" || longitude == "" ){
+				  $("#locationerror").text(' '+' *Location is Required')
+				}else{
+				
+				$("#title").val("")
+				$("#file").val("")
+				$("#date").val("")
+				$("#loc").val("")
+				$("#lat").val("")
+				$("#long").val("")
+				$("#newlink")[0].click();
+				
+				
+				
+				}
+				
+			}
+			
+			function reloadthepage(){
+			
+			location.reload(); 
+			}
         </script>
         <style>h1:</style>
         <br/>
@@ -94,13 +138,13 @@
         <h1>Video Upload</h1>
         <br/>
         <br/>
-        <form method="post" enctype="multipart/form-data" action="http://deco3500-27.uqcloud.net/www/upload.php">
-        <label for="title">Video Title</label>
+        <form id="videoform" method="post" enctype="multipart/form-data" >
+        <label id="titlelable" for="title">Video Title &nbsp &nbsp <span class="error" id="titleerror"></span></label>
 		<input id="title" type="text" name="title"><br>
-        <label for="file">Video:</label>
+        <label for="file">Video:&nbsp &nbsp <span class="error" id="videoerror"></span></label>
         <input name="file" type="file" capture="camera" accept="*" id="file">
         <br/>
-        <label for="tags">Tags:</label>
+        <label for="tags">Tags: </label>
         <input name="tags" id="tags" data-mini="true" value="" type="text">
         <br/>
         <label for="content">Graphic Content:</label>
@@ -110,11 +154,11 @@
         </select>
         <br/>
         <br/>
-        <label for="date">Date:</label>
+        <label for="date">Date: &nbsp &nbsp <span class="error" id="dateerror"></span></label>
         <input name="date" id="date" value="" type="date">
         <br/>
         <div>
-            <label for="text-basic">Location</label>
+            <label for="text-basic">Location &nbsp &nbsp <span class="error" id="locationerror"></span></label>
             <input id="loc" type="text" name="location"><br>
 			<label for="text-basic">Latitude:</label>
 			<input id="lat" type="text" name="latitude"><br>
@@ -122,9 +166,14 @@
             <input id="long" type="text" name="longitude"><br>
         </div>
 
-        <button type="submit" id="submit-5" class="ui-shadow ui-btn ui-corner-all ui-mini">Submit</button>
+         <a  data-rel="popup" data-position-to="window" data-role="button" data-inline="true"
+           data-transition="flip" data-theme="e" onclick=checkform()>Submit</a>
+		   <a  style="display:none;"href="#submitted" id="newlink" data-rel="popup" data-position-to="window" data-role="button" data-inline="true"
+           data-transition="flip" data-theme="e"></a>
         </form>
-
+		
+		
+		
 
         <img id="yourimage">
     </div>
@@ -134,7 +183,7 @@
            data-transition="flip" data-icon="info" data-theme="e">Info</a>
 
     </div>
-    <!-- About Author Popup -->
+    <!-- Info Popup -->
     <div data-role="popup" id="about" data-overlay-theme="a" data-theme="c" data-dismissible="false"
          style="max-width:300px;" class="ui-corner-all">
 
@@ -149,7 +198,20 @@
             <p>Video cannot be .avi file type<p>
         </div>
     </div>
-    <!-- /About -->
+    <!-- /submitted -->
+    
+    <div data-role="popup" id="submitted" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+    <div data-role="header" data-theme="a">
+    <h1>Submitted</h1>
+    </div>
+    <div role="main" class="ui-content">
+    <h3 class="ui-title">You video has successfully been submitted</h3>
+    <p>It will become available on the world map <br> once it has been approved by administration</p>
+     <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" onclick="reloadthepage()" >OK</a><br>
+	 
+	 
+    </div>
+   </div>
 </div>
 </body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

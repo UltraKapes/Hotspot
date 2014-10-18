@@ -311,3 +311,9 @@ li {
 #articlesDiv{
 	float: left;
 }
+
+.error{
+color:red;
+font-family: Georgia, 'HelveticaNeue', Helvetica, Arial, sans-serif;
+font-size: 1em;
+}
