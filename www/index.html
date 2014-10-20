@@ -188,6 +188,9 @@
 		
 		function myFunctionId (id) { 
    console.log(tubeArray); 
+    $('#articleLinks').remove();
+	$('#linkholder').append('<div id="articleLinks"></div>');
+	
    tubeArray.forEach(function(entry) {
        if (entry[0]==id) { 
          entry[4].forEach(function(innerArray){
@@ -273,7 +276,7 @@
 				alert("Geocode was not successful for the following reason: " + status);
 			}
 		}
-	file:///C:/Users/shane/Documents/GitHub/Hotspot/www/index.html#	//NEED
+	//NEED
 	function addMarkerAtCenter() {
 		var marker = new google.maps.Marker({
 			position: map.getCenter(),
@@ -407,14 +410,13 @@
         data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
     <h1>Articles</h1>
     </div>
-    <div role="main" class="ui-content">
-    <!--<h3 class="ui-title">Are you sure you want to delete this page?</h3>
-    <p>This action cannot be undone.</p>-->
+    <div  role="main" class="ui-content">
      <a href="upload.html" rel="external" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" >Upload Article</a><br>
+	 <div id="linkholder">
 	 <div id="articleLinks">
 	 
 	</div>
-	 
+	</div>
 	 
     </div>
    </div>
