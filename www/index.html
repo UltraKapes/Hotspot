@@ -231,7 +231,11 @@
         function reportResponse() {
     		alert("Your report has been received, thank you for making HotSpot a better place!");
         }
-    
+		
+		function sorry() {
+    		alert("Sorry no videos to display containing that tag");
+        }
+		
 		//SEARCH FUNCTIONALITY
 		//NEED
 		function geocode() {
@@ -248,7 +252,7 @@
 				alert("Geocode was not successful for the following reason: " + status);
 			}
 		}
-		//NEED
+	file:///C:/Users/shane/Documents/GitHub/Hotspot/www/index.html#	//NEED
 	function addMarkerAtCenter() {
 		var marker = new google.maps.Marker({
 			position: map.getCenter(),
@@ -333,6 +337,7 @@
                 <li><a id="changeMarkers1" href="#">All</a></li>
                 <li><a id="changeMarkers2" href="#">Youtube</a></li>
                 <li><a id="changeMarkers3" href="#">User Video</a></li>
+				<li><a href="#"><input type="text" id="address"/><input type="button" value="View By Tag" onclick="sorry()"></a></li>
             </ul>
             </div>
 			<!-- Upload -->	
@@ -384,7 +389,7 @@
     <div role="main" class="ui-content">
     <!--<h3 class="ui-title">Are you sure you want to delete this page?</h3>
     <p>This action cannot be undone.</p>-->
-     <a href="addvideo.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" >Upload Article</a><br>
+     <a href="upload.html" rel="external" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" >Upload Article</a><br>
 	 <div id="articleLinks">
 	 <a href="http:/www.google.com">Dummy Link</a><br><br>
 	</div>

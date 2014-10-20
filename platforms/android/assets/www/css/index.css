@@ -55,6 +55,8 @@ table {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
+
+
 body {
     -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
@@ -187,10 +189,23 @@ li {
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
-
+#container{
+	margin: auto;
+	text-align: center;
+	text-align: horizontal;
+	
+}
 #heading{
- color: red;
-   font-size: 2em;
+	color: red;
+	font-size: 2em;
+	display: inline-block;
+}
+
+#hotspotlogo
+{
+	height: 30px;
+	
+	margin: 0 auto;
 }
 
 #frame{ padding: 0px;}
@@ -201,11 +216,25 @@ li {
 
 #date{ width: auto !important;}
 
-#locations{
+.panelitem{
    margin:0px;
    padding:0px;
 }
+#firstHeading{
 
+	margin: 0.5px;
+    color: #343434;
+    font-weight: normal;
+    font-family: 'Ultra', sans-serif;   
+    font-size: 12;
+    line-height: 12px;
+    text-transform: uppercase;
+}
+
+}
+#box{
+    margin:0px;
+}
 /* your custom CSS \*/
 @-moz-keyframes pulsate {
     from {
@@ -237,7 +266,7 @@ li {
 }
 /* get the container that's just outside the marker image,
     which just happens to have our Marker title in it */
-#map_canvas div.gmnoprint[title="I might be here"] {
+#map_canvas div.gmnoprint[title="Hotspot"] {
     -moz-animation: pulsate 1.5s ease-in-out infinite;
     -webkit-animation: pulsate 1.5s ease-in-out infinite;
     border:1pt solid #fff;
@@ -256,15 +285,35 @@ li {
 }
 /* hide the superfluous marker image since it would expand and shrink with its containing element */
 /*	#map_canvas div[style*="987654"][title] img {*/
-#map_canvas div.gmnoprint[title="I might be here"] img {
+#map_canvas div.gmnoprint[title="Hotspot"] img {
     display:none;
 }
 /* compensate for iPhone and Android devices with high DPI, add iPad media query */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (device-width: 768px) {
-    #map_canvas div.gmnoprint[title="I might be here"] {
+    #map_canvas div.gmnoprint[title="Hotspot"] {
         margin:-10px 0 0 -10px;
     }
 }
 
+/* Images */
+.newsImg{
+	height: 20px;
+	padding-top: 5%;
+}
+#reportImg{
+	height: 20px;
+	
+	padding-top: 5%;
+}
+#reportDiv{
+	float: right;
+}
+#articlesDiv{
+	float: left;
+}
 
-
+.error{
+color:red;
+font-family: Georgia, 'HelveticaNeue', Helvetica, Arial, sans-serif;
+font-size: 1em;
+}
