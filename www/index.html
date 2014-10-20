@@ -22,21 +22,35 @@
 		 //Variables
 		
   		var geocoder;
-		 var journal;
+		 var journal; 
 		 var tubeArray = [
-                ['UQ', -27.495134, 153.013502, "http://www.youtube.com/embed/uZ2SWWDt8Wg", 1, 
+                ['UQ', -27.495134, 153.013502, "http://www.youtube.com/embed/uZ2SWWDt8Wg",  
 					[
 					["http://www.brisbanetimes.com.au/queensland/brisbane-students-protest-university-fee-hikes-20140521-zrk8o.html", "Brisbane students protest university fee hikes"],
 					["http://www.abc.net.au/pm/content/2012/s3578878.htm", "Angry protests over UQ student union election"],
 					]
 				],
-                ['New York', 40.715520, -74.002036, "http://www.youtube.com/embed/JG0wmXyi-Mw", 2],
-                ['To The Skies', 47.09399, 15.40548, "http://www.youtube.com/embed/tfEjTgUmeWw", 3],
-                ['Fallujah', 33.101509, 44.047308, "http://www.youtube.com/embed/V2EOMzZsTrE", 4]
+                ['New York', 40.715520, -74.002036, "http://www.youtube.com/embed/JG0wmXyi-Mw",
+					[
+					["http://nypost.com/2014/10/19/ny-taxpayers-risky-wall-street-bet-why-the-comptroller-race-matters/" , "NY taxpayers’ risky Wall Street bet: Why the comptroller race matters"]
+					]
+				],
+				['To The Skies', 47.09399, 15.40548, "http://www.youtube.com/embed/tfEjTgUmeWw", 
+					[
+					["http://www.abc.net.au/news/2014-10-19/battle-for-kobane-intensifies/5825324","Battle for Kobane intensifies as Islamic State uses car bombs, Syrian fighters execute captives"],
+					["http://news.yahoo.com/kurds-thwart-jihadist-bid-cut-off-syria-town-091610878.html","Jihadists take heavy losses in battle for Syria's Kobane"]
+					]
+				],
+                ['Fallujah', 33.101509, 44.047308, "http://www.youtube.com/embed/V2EOMzZsTrE", 
+					[
+					["http://www.abc.net.au/news/2014-05-15/cat-saves-boy-from-dog-attack/5454226","Video captures family cat saving California boy from dog attack"],
+					["http://www.telegraph.co.uk/lifestyle/pets/11170604/Fines-of-20000-for-dogs-that-chase-the-postman.html","Fines of £20,000 for dogs that chase the postman"]
+					]
+				]
             ];
 
             var usersArray = [
-                ["UQ", -27.47201, 153.02445, "http:////www.youtube.com/embed/R5j-Vbt_vmg",1]
+                ["UQ", -27.47201, 153.02445, "http:////www.youtube.com/embed/R5j-Vbt_vmg",]
                
             ];
        var superArray;
@@ -73,6 +87,8 @@
             var setheight = ($(document).height()/4);
 
             for (i = 0; i < superArray.length; i++) {
+			
+				
                 var source = superArray[i][3];
 				var id = superArray[i][0];
                 var contentString = '<div id="content">' +
@@ -167,16 +183,21 @@
             map.setZoom(5);
 
         }
+
 		
 		
-		function myFunctionId (id) {
-			journal = id; 
-			alert(journal);
-			//for (var i = 0; i < array.length[5]{                                     <---- go through each array in the 5th element (the article array)
-			//	append the div so that <a href="articleArray[1]">articleArray[2]</a>   <---- articleArray[1] is the link & articleArray[2] is the title
-			//}
-			
-		}
+		function myFunctionId (id) { 
+   console.log(tubeArray); 
+   tubeArray.forEach(function(entry) {
+       if (entry[0]==id) { 
+         entry[4].forEach(function(innerArray){
+            $('#articleLinks').append("<a href='"+innerArray[0]+"'>"+innerArray[1]+'</a> <br><br>' ); // use CSS to break lines
+         });
+         return;
+       }
+   });                 
+}
+		
 		
 
         window.onload = function() {
@@ -200,7 +221,7 @@
             }, false);
 
         }
-
+		
         function displayMapMarkers(type) {
             if (type== "all")
             {  superArray = [];
@@ -391,7 +412,7 @@
     <p>This action cannot be undone.</p>-->
      <a href="upload.html" rel="external" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" >Upload Article</a><br>
 	 <div id="articleLinks">
-	 <a href="http:/www.google.com">Dummy Link</a><br><br>
+	 
 	</div>
 	 
 	 
